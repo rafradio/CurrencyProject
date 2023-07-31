@@ -1,6 +1,5 @@
 package com.rafael.bankCurrencies.bankCurrencies.models;
 
-import jakarta.persistence.Entity;
 import java.time.LocalDateTime;
 import java.util.List;
 import jakarta.persistence.Column;
@@ -12,10 +11,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @Entity
 @Table(name="client")
+@Getter @Setter @NoArgsConstructor
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +36,6 @@ public class Client {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
     private List<Limit> limits;
     
-    public Client() {
-    }
 
     public Client(Long id, LocalDateTime created, String bankAccountNumber, List<Transaction> transactions, List<Limit> limits) {
         this.id = id;
@@ -44,43 +45,4 @@ public class Client {
         this.limits = limits;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public String getBankAccountNumber() {
-        return bankAccountNumber;
-    }
-
-    public void setBankAccountNumber(String bankAccountNumber) {
-        this.bankAccountNumber = bankAccountNumber;
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
-
-    public List<Limit> getLimits() {
-        return limits;
-    }
-
-    public void setLimits(List<Limit> limits) {
-        this.limits = limits;
-    }
 }

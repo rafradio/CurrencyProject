@@ -10,3 +10,6 @@ databaseChangeLog:
         
     - include:
         file: db/changelog/0.0.4/changelog-4.sql
+        
+    - include:
+        file: db/changelog/0.0.5/changelog-5.yaml
