@@ -11,10 +11,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @Entity
 @Table(name="transaction")
+@Getter @Setter @NoArgsConstructor
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,9 +48,6 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name="limit_id")
     private Limit limit;
-    
-    public Transaction() {
-    }
 
     public Transaction(Long id, LocalDateTime created, String accountFrom, String accountTo, BigDecimal sum, String currencyShortname, String expenseCategory, boolean exceeded, Client client, Limit limit) {
         this.id = id;
@@ -58,87 +59,6 @@ public class Transaction {
         this.expenseCategory = expenseCategory;
         this.exceeded = exceeded;
         this.client = client;
-        this.limit = limit;
-    }
-
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public String getAccountFrom() {
-        return accountFrom;
-    }
-
-    public void setAccountFrom(String accountFrom) {
-        this.accountFrom = accountFrom;
-    }
-
-    public String getAccountTo() {
-        return accountTo;
-    }
-
-    public void setAccountTo(String accountTo) {
-        this.accountTo = accountTo;
-    }
-
-    public BigDecimal getSum() {
-        return sum;
-    }
-
-    public void setSum(BigDecimal sum) {
-        this.sum = sum;
-    }
-
-    public String getCurrencyShortname() {
-        return currencyShortname;
-    }
-
-    public void setCurrencyShortname(String currencyShortname) {
-        this.currencyShortname = currencyShortname;
-    }
-
-    public String getExpenseCategory() {
-        return expenseCategory;
-    }
-
-    public void setExpenseCategory(String expenseCategory) {
-        this.expenseCategory = expenseCategory;
-    }
-
-    public boolean isExceeded() {
-        return exceeded;
-    }
-
-    public void setExceeded(boolean exceeded) {
-        this.exceeded = exceeded;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Limit getLimit() {
-        return limit;
-    }
-
-    public void setLimit(Limit limit) {
         this.limit = limit;
     }
 
